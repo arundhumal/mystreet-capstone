@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: street
+  datasource:
+    url: jdbc:h2:mem:mystreetdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:dbScript/data.sql
+      continue-on-error: false
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param
+    include-exception: false
+
+jwt:
+  secret: mystreet-super-secret-key-for-jwt-token-generation-change-in-production-environment-must-be-at-least-64-characters-long
+  expiration: 86400000
+
+logging:
+  level:
+    com.mystreet: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.h2.server.web: DEBUG
