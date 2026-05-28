@@ -28,7 +28,7 @@ spring:
       continue-on-error: false
 
 server:
-  port: 8080
+  port: ${PORT:8080}
   error:
     include-message: always
     include-binding-errors: always
@@ -36,7 +36,7 @@ server:
     include-exception: false
 
 jwt:
-  secret: mystreet-super-secret-key-for-jwt-token-generation-change-in-production-environment-must-be-at-least-64-characters-long
+  secret: ${JWT_SECRET:mystreet-super-secret-key-for-jwt-token-generation-change-in-production-environment-must-be-at-least-64-characters-long}
   expiration: 86400000
 
 logging:
